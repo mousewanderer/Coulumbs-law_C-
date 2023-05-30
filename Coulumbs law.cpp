@@ -1,7 +1,9 @@
+// Import modules or files for printing and math
 #include <iostream>
 #include <cmath>
 #include <string>
 
+// function for calculating the force
 double calculateForce(double charge1, double charge2, double distance) {
     const double k = 8.99e9;  // Coulomb's constant
 
@@ -10,6 +12,7 @@ double calculateForce(double charge1, double charge2, double distance) {
 
     return force;
 }
+// function for calculating the Charge 1
 double calculateCharge1(double charge2, double distance, double force) {
     const double k = 8.99e9;  // Coulomb's constant
 
@@ -18,6 +21,7 @@ double calculateCharge1(double charge2, double distance, double force) {
 
     return charge1;
 }
+// function for calculating the Distance
 double calculateDistance(double charge1, double charge2, double force) {
     const double k = 8.99e9;  // Coulomb's constant
 
@@ -33,15 +37,17 @@ void exitProgram() {
     exit(0); // Terminate the program
 }
 
+
+// START THE SCRIPT RUNNING
 int main() {
     double charge1, charge2, distance, force;
     std::string selection;
-
+//While true "display coulumbs law"
     while (true) {
         std::cout << "Solve Coulumb's law \nEnter a number to solve";
-        std::cout << "\n1 = Charge \n2 = Force \n3 = Distance\n4 = exit:";
+        std::cout << "\n1 = Force \n2 = charge \n3 = Distance\n4 = exit:";
         std::getline(std::cin, selection );
-
+// selection one is to calculate the force between two charges
         if (selection== "1") {
             std::cout << "Enter the value of charge 1 (in coulombs): ";
             std::cin >> charge1;
@@ -52,7 +58,7 @@ int main() {
 
             double force = calculateForce(charge1, charge2, distance);
             std::cout << "The force between the charges is: " << force << " N" << std::endl;
-
+// selection two is to calculate the charge 
         } else if (selection== "2") {
             std::cout << "Enter the value of charge 2 (in coulombs): ";
             std::cin >> charge2;
@@ -64,6 +70,8 @@ int main() {
             double charge1 = calculateCharge1(charge2, distance, force);
 
             std::cout << "The value of charge 1 is: " << charge1 << " C" << std::endl;
+            
+ // selection three is to calculate the the distance         
         } else if (selection == "3") {
             std::cout << "Enter the value of charge 1 (in coulombs): ";
             std::cin >> charge1;
