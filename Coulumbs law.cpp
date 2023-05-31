@@ -8,16 +8,16 @@
 #include <iostream>
 #include <limits>
 
-int getIntInput()
+double getdoubleInput(const std::string& variableName)
 {
     while (true)
     {
+         std::cout << "Enter the value of " << variableName << ": ";
         // Check if the input is an integer
         if (std::cin.fail())
         {
             std::cin.clear();  // Clear the error flag
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Ignore invalid input
-            std::cout << "Invalid input. Please enter an integer." << std::endl;
             continue;
         }
 
@@ -83,38 +83,28 @@ int main() {
         std::getline(std::cin, selection );
 // selection one is to calculate the force between two charges
         if (selection== "1") {
-            std::cout << "Enter the value of charge 1 (in coulombs): ";
-  
+            double charge1 = getdoubleInput("charge 1 (in coulombs)");
+            double charge2 = getdoubleInput("charge 2 (in coulombs");
+            double distance = getdoubleInput("distance between the charges (in meters):");
 
-            std::cin >> charge1;
-            std::cout << "Enter the value of charge 2 (in coulombs): ";
-            std::cin >> charge2;
-            std::cout << "Enter the distance between the charges (in meters): ";
-            std::cin >> distance;
 
             double force = calculateForce(charge1, charge2, distance);
             std::cout << "The force between the charges is: " << force << " N" << std::endl;
-// selection two is to calculate the charge 
+// selection two is to calculate the charge
         } else if (selection== "2") {
-            std::cout << "Enter the value of charge 2 (in coulombs): ";
-            std::cin >> charge2;
-            std::cout << "Enter the distance between the charges (in meters): ";
-            std::cin >> distance;
-            std::cout << "Enter the value of the force (in newtons): ";
-            std::cin >> force;
+            double charge2 = getdoubleInput("charge 2 (in coulombs");
+            double distance = getdoubleInput("distance between the charges (in meters):");
+            double force = getdoubleInput("the force (in newtons): ");
 
             double charge1 = calculateCharge1(charge2, distance, force);
 
             std::cout << "The value of charge 1 is: " << charge1 << " C" << std::endl;
-            
- // selection three is to calculate the the distance         
+
+ // selection three is to calculate the the distance
         } else if (selection == "3") {
-            std::cout << "Enter the value of charge 1 (in coulombs): ";
-            std::cin >> charge1;
-            std::cout << "Enter the value of charge 2 (in coulombs): ";
-            std::cin >> charge2;
-            std::cout << "Enter the value of the force (in newtons): ";
-            std::cin >> force;
+            double charge1 = getdoubleInput("charge 1 (in coulombs)");
+            double charge2 = getdoubleInput("charge 2 (in coulombs");
+            double force = getdoubleInput("the force (in newtons): ");
         // Calculate the distance using Coulomb's Law
             double distance = calculateDistance(charge1, charge2, force);
         // Output the result
@@ -127,7 +117,3 @@ int main() {
          }
     return 0;
     }
-
-
-
-
