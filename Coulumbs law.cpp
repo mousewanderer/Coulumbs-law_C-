@@ -2,6 +2,40 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <sstream>
+
+// For error handling
+#include <iostream>
+#include <limits>
+
+int getIntInput()
+{
+    while (true)
+    {
+        // Check if the input is an integer
+        if (std::cin.fail())
+        {
+            std::cin.clear();  // Clear the error flag
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Ignore invalid input
+            std::cout << "Invalid input. Please enter an integer." << std::endl;
+            continue;
+        }
+
+        double value;
+        std::cin >> value;
+
+        // Check if there was any leftover input
+        if (std::cin.peek() != '\n')
+        {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Ignore leftover input
+            std::cout << "Invalid input. Please enter a number." << std::endl;
+            continue;
+        }
+
+        return value;
+    }
+}
+
 
 // function for calculating the force
 double calculateForce(double charge1, double charge2, double distance) {
@@ -50,6 +84,8 @@ int main() {
 // selection one is to calculate the force between two charges
         if (selection== "1") {
             std::cout << "Enter the value of charge 1 (in coulombs): ";
+  
+
             std::cin >> charge1;
             std::cout << "Enter the value of charge 2 (in coulombs): ";
             std::cin >> charge2;
